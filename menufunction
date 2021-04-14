@@ -1,0 +1,24 @@
+
+#! /bin/bash
+# P1 Palha. Por: Lívia Gaione
+
+echo; echo -n "Entre com:
+1-Exibir IP
+2-Exbir info de Roteamento
+3- Exibir hosts: " ; echo ;  read OPC
+
+ function infoIp() {
+        echo '(Func) Info ip: ' ; ip a
+}
+ function InfoRoute() {
+        echo '(Func) Info Roteamento: ' ; ip route
+}
+ function InfoHosts() {
+        echo '(Func) Info da tabela hosts: ' ; cat /etc/hosts
+}
+ case "$OPC" in
+ 1) infoIp ;;
+ 2) InfoRoute ;;
+ 3) InfoHosts ;;
+ *) echo "Opção Inválida!" ;;
+esac
