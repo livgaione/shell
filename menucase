@@ -1,0 +1,14 @@
+#!/bin/bash 
+#P1 Palha. Por Lívia Gaione
+
+echo; echo -n "Entre com: 
+1. Exibir IP
+2. Exibir info de roteamento
+3. Exibir rosts: "; read OPC
+
+case "$OPC"in
+1) echo "Info ip: :"; ip a;;
+2) echo "Info de roteamento: "; ip route;;
+3) echo "Tabela hosts: "; cat etc/hosts;;
+*) echo "Opção inválida";;
+esac
