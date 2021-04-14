@@ -1,0 +1,23 @@
+#! /bin/bash
+# P1 Palha. Automatização do arquivo de configuração do smb.conf. Por: Lívia Gaione
+# Version: 1.0
+
+OPC="s"; CAM="/etc/samba/smb.conf"
+while [ "$OPC" == "s"-o "$OPC" == "S" ]; do
+echo -n "Nome do Compartilhamento: "; read VARCOMP; echo
+echo -n "Comentário: "; read VARCOMENTARIO; echo
+echo:-n "Usuário: "; read VARUSUARIO; echo
+echo "#---------------------------------------------------
+ [$VARCOMP]
+ comment = $VARCOMENTARIO
+ valid users = $VARUSUARIO" >> $CAM
+        echo "Usar nome do compartilhamento para o diretório "
+        echo -n "s - sim: "; read OPC
+        if [ "$OPC" == "s" -o "$OPC"=="S" ]; then
+         echo "path = /home/$VARCOMP" >> $CAM
+        else
+         echo -n "Nome do diretório: "; read VARDIR;
+         echo  "path = /home/$VARDIR" >> $CAM	
+        fi
+ echo -n "s para continuar: "; read OPC
+done; echo; cat "$CAM"; echo
